@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Modal from './Modal';
 import {
 	BiChevronDownCircle,
@@ -23,11 +23,7 @@ const Missions = () => {
 		getTotals();
 	}, []);
 
-	useEffect(() => {
-		getMissions();
-	}, [pageNumber]);
-
-	const getMissions = async () => {
+	const getMissions = useCallback(async () => {
 		const response = await fetch(
 			'https://api.spacexdata.com/v4/launches/query',
 			{
@@ -61,7 +57,11 @@ const Missions = () => {
 		setHasPrevPage(data.hasPrevPage);
 		setHasNextPage(data.hasNextPage);
 		setMissions(data.docs);
-	};
+	}, [pageNumber]);
+
+	useEffect(() => {
+		getMissions();
+	}, [getMissions]);
 
 	const getTotals = async () => {
 		let totalLand = 0;

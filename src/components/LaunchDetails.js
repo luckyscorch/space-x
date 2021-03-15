@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 
 const LaunchDetails = ({ nextLaunch }) => {
@@ -9,13 +9,7 @@ const LaunchDetails = ({ nextLaunch }) => {
 	const [launchSite, setLaunchSite] = useState({});
 	const [landSite, setLandSite] = useState({});
 
-	//get the launchpad and the landpad
-	useEffect(() => {
-		fetchLaunchpad();
-		fetchLandpad();
-	}, [nextLaunch]);
-
-	const fetchLaunchpad = async () => {
+	const fetchLaunchpad = useCallback(async () => {
 		try {
 			const res = await fetch(
 				`https://api.spacexdata.com/v4/launchpads/${launchpad}`
@@ -25,9 +19,9 @@ const LaunchDetails = ({ nextLaunch }) => {
 		} catch (error) {
 			console.log(error);
 		}
-	};
+	}, [launchpad]);
 
-	const fetchLandpad = async () => {
+	const fetchLandpad = useCallback(async () => {
 		try {
 			const res = await fetch(
 				`https://api.spacexdata.com/v4/landpads/${landpad}`
@@ -37,7 +31,7 @@ const LaunchDetails = ({ nextLaunch }) => {
 		} catch (error) {
 			console.log(error);
 		}
-	};
+	}, [landpad]);
 
 	const unixToTime = (unix) => {
 		const dateObj = new Date(unix * 1000);
@@ -46,54 +40,63 @@ const LaunchDetails = ({ nextLaunch }) => {
 		return date;
 	};
 
+	useEffect(() => {
+		fetchLaunchpad();
+		fetchLandpad();
+	}, [fetchLandpad, fetchLaunchpad]);
+
 	return (
-		<StyledDiv>
-			<div className='description'>
-				<div className='name'>
-					<h3>{nextLaunch.name}</h3>
-				</div>
-				<p>
-					{nextLaunch.details
-						? nextLaunch.details
-						: 'Check back later for more information..'}
-				</p>
-			</div>
-			<img src={nextLaunch.links.patch.small} alt='patch' />
-			<table>
-				<tbody>
-					<tr>
-						<td>SCHEDULED LAUNCH</td>
-						<td>{unixToTime(date_unix)}</td>
-					</tr>
-					<tr className='line'></tr>
-					<tr>
-						<td>LAUNCH SITE</td>
-						<td>{launchSite.name ? launchSite.name : 'Undetermined'}</td>
-					</tr>
-					<tr className='line'></tr>
-					<tr>
-						<td>FLIGHT NUMBER</td>
-						<td>{flight_number ? flight_number : 'Undetermined'}</td>
-					</tr>
-					<tr className='line'></tr>
-					<tr>
-						<td>LANDING SITE</td>
-						<td> {landSite.name ? landSite.name : 'Undetermined'}</td>
-					</tr>
-					<tr className='line'></tr>
-					<tr>
-						<td>REUSED</td>
-						<td>{reused ? 'True' : 'False'}</td>
-					</tr>
-					<tr className='line'></tr>
-					<tr>
-						<td>NUMBER OF FLIGHTS</td>
-						<td>{numberOfFlights ? numberOfFlights : 'Undetermined'}</td>
-					</tr>
-					<tr className='line'></tr>
-				</tbody>
-			</table>
-		</StyledDiv>
+		<>
+			{nextLaunch.length === 0 ? null : (
+				<StyledDiv>
+					<div className='description'>
+						<div className='name'>
+							<h3>{nextLaunch.name}</h3>
+						</div>
+						<p>
+							{nextLaunch.details
+								? nextLaunch.details
+								: 'Check back later for more information..'}
+						</p>
+					</div>
+					<img src={nextLaunch.links.patch.small} alt='patch' />
+					<table>
+						<tbody>
+							<tr>
+								<td>SCHEDULED LAUNCH</td>
+								<td>{unixToTime(date_unix)}</td>
+							</tr>
+							<tr className='line'></tr>
+							<tr>
+								<td>LAUNCH SITE</td>
+								<td>{launchSite.name ? launchSite.name : 'Undetermined'}</td>
+							</tr>
+							<tr className='line'></tr>
+							<tr>
+								<td>FLIGHT NUMBER</td>
+								<td>{flight_number ? flight_number : 'Undetermined'}</td>
+							</tr>
+							<tr className='line'></tr>
+							<tr>
+								<td>LANDING SITE</td>
+								<td> {landSite.name ? landSite.name : 'Undetermined'}</td>
+							</tr>
+							<tr className='line'></tr>
+							<tr>
+								<td>REUSED</td>
+								<td>{reused ? 'True' : 'False'}</td>
+							</tr>
+							<tr className='line'></tr>
+							<tr>
+								<td>NUMBER OF FLIGHTS</td>
+								<td>{numberOfFlights ? numberOfFlights : 'Undetermined'}</td>
+							</tr>
+							<tr className='line'></tr>
+						</tbody>
+					</table>
+				</StyledDiv>
+			)}
+		</>
 	);
 };
 
@@ -104,7 +107,7 @@ const StyledDiv = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 	width: 80vw;
-	padding: 2rem 5rem;
+	padding: 1rem 5rem;
 	background-color: rgba(0, 0, 0, 0.5);
 	position: relative;
 	border-radius: 0.2rem;

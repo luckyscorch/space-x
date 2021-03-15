@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { AppContext } from '../context';
 import styled from 'styled-components';
 
@@ -11,7 +11,7 @@ const Timer = () => {
 		secs: '0',
 	});
 
-	const calculateTimeleft = () => {
+	const calculateTimeleft = useCallback(() => {
 		const launchDate = nextLaunch.date_unix;
 		const now = Math.floor(new Date().getTime() / 1000);
 		const diff = launchDate - now;
@@ -33,14 +33,14 @@ const Timer = () => {
 			};
 		}
 		return timeLeft;
-	};
+	}, [nextLaunch]);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setTimeToLaunch(calculateTimeleft());
 		}, 1000);
 		return () => clearTimeout(timer);
-	}, [timeToLaunch]);
+	}, [calculateTimeleft]);
 
 	const renderTime = (string) => {
 		if (string.length > 1) {

@@ -15,7 +15,7 @@ const Rocket = () => {
 		);
 
 		setSelectedRocket(selected[0]);
-	}, [rocket, rockets]);
+	}, [rocket, rockets, getPathName]);
 
 	return (
 		<>
