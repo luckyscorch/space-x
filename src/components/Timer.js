@@ -40,7 +40,7 @@ const Timer = () => {
 			setTimeToLaunch(calculateTimeleft());
 		}, 1000);
 		return () => clearTimeout(timer);
-	}, [calculateTimeleft]);
+	}, [timeToLaunch, calculateTimeleft]);
 
 	const renderTime = (string) => {
 		if (string.length > 1) {
