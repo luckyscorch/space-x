@@ -69,12 +69,18 @@ const Modal = ({ showModal, setShowModal, selectedMission }) => {
 export default Modal;
 
 const StyledSection = styled.section`
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	width: 100vw;
 	min-height: 100vh;
 	position: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
 	.modal-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -114,6 +120,7 @@ const StyledSection = styled.section`
 	img {
 		height: 8rem;
 		width: auto;
+		padding: 0.5rem;
 	}
 
 	.description {
@@ -154,5 +161,21 @@ const StyledSection = styled.section`
 
 	li:last-of-type {
 		border-bottom: none;
+	}
+	@media only screen and (max-width: 1024px) {
+		.modal-wrapper {
+			width: 40%;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		.modal-wrapper {
+			width: 60%;
+		}
+	}
+	@media only screen and (max-width: 480px) {
+		.modal-wrapper {
+			width: 100%;
+		}
 	}
 `;

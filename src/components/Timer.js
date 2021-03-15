@@ -42,39 +42,41 @@ const Timer = () => {
 		return () => clearTimeout(timer);
 	}, [timeToLaunch]);
 
-	const checkFirstChar = (string) => (string.length === 1 ? '0' : string[0]);
-	const checkSecondChar = (string) =>
-		string.length === 1 ? string[0] : string[1];
+	const renderTime = (string) => {
+		if (string.length > 1) {
+			return (
+				<div className='time-box'>
+					<span>{string[0]}</span>
+					<span>{string[1]}</span>
+				</div>
+			);
+		} else {
+			return (
+				<div className='time-box'>
+					<span>0</span>
+					<span>{string[0]}</span>
+				</div>
+			);
+		}
+	};
 
 	return (
 		<StyledTimer>
 			<div className='time-unit'>
 				<h3>DAYS</h3>
-				<div className='time-box'>
-					<span>{checkFirstChar(timeToLaunch.days)}</span>
-					<span>{checkSecondChar(timeToLaunch.days)}</span>
-				</div>
+				{renderTime(timeToLaunch.days)}
 			</div>
 			<div className='time-unit'>
 				<h3>HOURS</h3>
-				<div className='time-box'>
-					<span>{checkFirstChar(timeToLaunch.hours)}</span>
-					<span>{checkSecondChar(timeToLaunch.hours)}</span>
-				</div>
+				{renderTime(timeToLaunch.hours)}
 			</div>
 			<div className='time-unit'>
 				<h3>MINS</h3>
-				<div className='time-box'>
-					<span>{checkFirstChar(timeToLaunch.mins)}</span>
-					<span>{checkSecondChar(timeToLaunch.mins)}</span>
-				</div>
+				{renderTime(timeToLaunch.mins)}
 			</div>
 			<div className='time-unit'>
 				<h3>SECS</h3>
-				<div className='time-box'>
-					<span>{checkFirstChar(timeToLaunch.secs)}</span>
-					<span>{checkSecondChar(timeToLaunch.secs)}</span>
-				</div>
+				{renderTime(timeToLaunch.secs)}
 			</div>
 		</StyledTimer>
 	);
@@ -86,6 +88,7 @@ const StyledTimer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
+	padding: 1rem;
 
 	h3 {
 		text-align: center;
@@ -107,5 +110,22 @@ const StyledTimer = styled.div`
 		background-color: rgba(255, 255, 255, 0.1);
 		margin: 0.2rem;
 		border-radius: 0.1rem;
+	}
+
+	@media screen and (max-width: 1024px) {
+		h3 {
+			font-size: 1rem;
+		}
+
+		.time-box {
+			padding: 0.1rem;
+		}
+
+		span {
+			width: 2rem;
+			font-size: 3rem;
+			font-weight: 300;
+			margin: 0.1rem;
+		}
 	}
 `;

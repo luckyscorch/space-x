@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context';
 import { Link } from 'react-router-dom';
-// import logo from '../images/logo.svg';
 import styled from 'styled-components';
 
 const Nav = () => {
@@ -93,5 +92,46 @@ const StyledNav = styled.nav`
 
 	button:focus {
 		outline: none;
+	}
+
+	@media only screen and (max-width: 1024px) {
+		padding: 1rem;
+
+		img {
+			height: 2.2rem;
+		}
+
+		h3 {
+			font-size: 0.8rem;
+		}
+
+		button {
+			width: 6rem;
+			font-size: 0.8rem;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		flex-direction: column;
+		padding: 0.5rem;
+
+		ul {
+			width: 100%;
+			justify-content: space-evenly;
+		}
+
+		img {
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	@media only screen and (max-width: 480px) {
+		h3 {
+			font-size: 0.7rem;
+		}
+		button {
+			width: 5rem;
+			font-size: 0.7rem;
+		}
 	}
 `;

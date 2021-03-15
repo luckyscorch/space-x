@@ -5,30 +5,32 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
 	const [rockets, setRockets] = useState([]);
-	const [nextLaunch, setNextLaunch] = useState();
-	const [missions, setMissions] = useState();
+	const [nextLaunch, setNextLaunch] = useState([]);
 
-	//get the rockets
 	useEffect(() => {
-		fetch('https://api.spacexdata.com/v4/rockets')
-			.then((response) => response.json())
-			.then((data) => setRockets(data));
+		getRockets();
+		getNextLaunch();
 	}, []);
 
-	//get next launch details
-	useEffect(() => {
-		fetch('https://api.spacexdata.com/v4/launches/next')
-			.then((response) => response.json())
-			.then((data) => setNextLaunch(data));
-	}, []);
+	const getRockets = async () => {
+		const response = await fetch('https://api.spacexdata.com/v4/rockets');
+		const data = await response.json();
+		setRockets(data);
+	};
+
+	const getNextLaunch = async () => {
+		const response = await fetch('https://api.spacexdata.com/v4/launches/next');
+		const data = await response.json();
+		setNextLaunch(data);
+	};
 
 	const getPathName = (name) => {
-		const pathName = name.replace(/%20/g, ' ');
+		const pathName = name.replace(/%20/g, '');
 		return pathName.split(' ').join('');
 	};
 
 	return (
-		<AppContext.Provider value={{ rockets, nextLaunch, getPathName, missions }}>
+		<AppContext.Provider value={{ rockets, nextLaunch, getPathName }}>
 			{children}
 		</AppContext.Provider>
 	);

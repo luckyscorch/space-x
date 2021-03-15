@@ -51,7 +51,6 @@ const LaunchDetails = ({ nextLaunch }) => {
 			<div className='description'>
 				<div className='name'>
 					<h3>{nextLaunch.name}</h3>
-					<img src={nextLaunch.links.patch.small} alt='patch' />
 				</div>
 				<p>
 					{nextLaunch.details
@@ -59,6 +58,7 @@ const LaunchDetails = ({ nextLaunch }) => {
 						: 'Check back later for more information..'}
 				</p>
 			</div>
+			<img src={nextLaunch.links.patch.small} alt='patch' />
 			<table>
 				<tbody>
 					<tr>
@@ -104,7 +104,6 @@ const StyledDiv = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 	width: 80vw;
-	height: 100%;
 	padding: 2rem 5rem;
 	background-color: rgba(0, 0, 0, 0.5);
 	position: relative;
@@ -137,15 +136,15 @@ const StyledDiv = styled.div`
 		display: flex;
 		flex-direction: column;
 		width: 40vw;
-		padding-top: 1rem;
-		padding-right: 5rem;
+		padding-top: 0.5rem;
+		padding-right: 0.5rem;
 		justify-content: flex-start;
 		align-items: flex-start;
 	}
 
 	table {
 		display: flex;
-		width: 40vw;
+		width: 50vw;
 		height: 100%;
 		align-items: center;
 		justify-content: center;
@@ -181,5 +180,52 @@ const StyledDiv = styled.div`
 
 	.line:last-child {
 		margin-bottom: 0;
+	}
+
+	@media only screen and (max-width: 1024px) {
+		padding: 1rem;
+		h3 {
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+
+		p {
+			font-size: 1rem;
+			font-weight: 300;
+		}
+
+		td {
+			font-weight: 300;
+		}
+
+		img {
+			width: 80px;
+			height: 80px;
+			position: absolute;
+			top: -40px;
+			right: -40px;
+		}
+
+		table {
+			width: 50vw;
+		}
+
+		td {
+			font-size: 1rem;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		.description {
+			display: none;
+		}
+		table {
+			width: 100%;
+		}
+	}
+	@media only screen and (max-width: 480px) {
+		td {
+			font-size: 0.8rem;
+		}
 	}
 `;

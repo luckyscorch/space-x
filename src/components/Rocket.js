@@ -7,18 +7,19 @@ import styled from 'styled-components';
 const Rocket = () => {
 	const { rockets, getPathName } = useContext(AppContext);
 	const { rocket } = useParams();
-	const [selectedRocket, setSelectedRocket] = useState();
+	const [selectedRocket, setSelectedRocket] = useState([]);
 
 	useEffect(() => {
 		const selected = rockets.filter(
 			(r) => getPathName(r.name.toLowerCase()) === rocket
 		);
+
 		setSelectedRocket(selected[0]);
 	}, [rocket, rockets]);
 
 	return (
 		<>
-			{selectedRocket && (
+			{selectedRocket.length === 0 ? null : (
 				<StyledSection>
 					<div className='wrapper'>
 						<div className='overview'>
@@ -154,7 +155,6 @@ const StyledSection = styled.section`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 8vw;
 	}
 
 	img {
@@ -213,5 +213,39 @@ const StyledSection = styled.section`
 
 	.line:last-child {
 		margin-bottom: 0;
+	}
+
+	@media only screen and (max-width: 1024px) {
+		.wrapper {
+			justify-content: space-evenly;
+			width: 100%;
+			padding: 0.5rem;
+		}
+		img {
+			max-width: 30vw;
+		}
+
+		table {
+			width: 50vw;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		h1 {
+			font-size: 2rem;
+		}
+
+		h3 {
+			font-size: 1rem;
+		}
+
+		table {
+			width: 60vw;
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		td {
+			font-size: 0.8rem;
+		}
 	}
 `;

@@ -10,7 +10,7 @@ const Home = () => {
 
 	return (
 		<>
-			{nextLaunch && (
+			{nextLaunch.length === 0 ? null : (
 				<StyledDiv>
 					<div className='wrapper'>
 						<div className='mission'>
@@ -36,9 +36,9 @@ export default Home;
 
 const StyledDiv = styled.div`
 	display: flex;
-	width: 100%;
+	height: 80%;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 
 	.wrapper {
@@ -81,5 +81,34 @@ const StyledDiv = styled.div`
 
 	button:focus {
 		outline: none;
+	}
+
+	@media only screen and (max-width: 1024px) {
+		.mission p {
+			font-size: 1.5rem;
+		}
+
+		.mission h1 {
+			font-size: 2rem;
+		}
+		button {
+			width: 8rem;
+			margin-top: 1rem;
+			font-size: 0.8rem;
+			padding: 0.5rem 0.5rem;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		justify-content: space-evenly;
+		.wrapper {
+			flex-direction: column;
+		}
+		button {
+			width: 6rem;
+			margin-top: 1rem;
+			font-size: 0.7rem;
+			padding: 0.5rem 0.5rem;
+		}
 	}
 `;

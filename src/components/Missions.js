@@ -9,7 +9,7 @@ import CountUp from 'react-countup';
 import styled from 'styled-components';
 
 const Missions = () => {
-	const [missions, setMissions] = useState();
+	const [missions, setMissions] = useState([]);
 	const [totalLaunches, setTotalLaunches] = useState(0);
 	const [totalLandings, setTotalLandings] = useState(0);
 	const [totalReflown, setTotalReflown] = useState(0);
@@ -105,7 +105,7 @@ const Missions = () => {
 
 	return (
 		<>
-			{missions && (
+			{missions.length === 0 ? null : (
 				<StyledSection>
 					<div className='totals'>
 						<div className='total'>
@@ -136,16 +136,18 @@ const Missions = () => {
 							<BiChevronDownCircle className='logo arrow' onClick={nextPage} />
 						</div>
 						<table>
-							<tbody>
-								<tr>
-									<td className='header'>FLIGHT NO</td>
-									<td className='header'>VEHICLE</td>
-									<td className='header'>DATE</td>
-									<td className='header'>LAUNCH SITE</td>
-									<td className='header'>PAYLOAD</td>
-									<td className='header'>CUSTOMER</td>
-									<td className='header'>OUTCOME</td>
+							<thead>
+								<tr className='head'>
+									<th>FLIGHT NO</th>
+									<th>VEHICLE</th>
+									<th>DATE</th>
+									<th>LAUNCH SITE</th>
+									<th>PAYLOAD</th>
+									<th>CUSTOMER</th>
+									<th>OUTCOME</th>
 								</tr>
+							</thead>
+							<tbody>
 								{missions.map((mission) => {
 									return (
 										<tr key={mission.id} onClick={() => openModal(mission)}>
@@ -244,6 +246,11 @@ const StyledSection = styled.section`
 		margin-left: 0.5rem;
 	}
 
+	.head:hover {
+		background-color: rgba(0, 0, 0, 0) !important;
+		cursor: auto;
+	}
+
 	tr {
 		width: 100%;
 		height: 3rem;
@@ -254,13 +261,8 @@ const StyledSection = styled.section`
 		align-items: center;
 	}
 
-	tr:first-child:hover {
-		background-color: rgba(0, 0, 0, 0) !important;
-		cursor: auto;
-	}
-
 	tr:hover {
-		background-color: rgba(0, 82, 136, 0.6) !important;
+		background-color: rgba(0, 82, 136, 0.2) !important;
 	}
 
 	tr:nth-child(even) {
@@ -273,6 +275,13 @@ const StyledSection = styled.section`
 		font-weight: 400;
 		text-align: center;
 	}
+
+	th {
+		flex: 1 1 15%;
+		font-size: 0.8rem;
+		font-weight: 600;
+		text-align: center;
+	}
 	.success {
 		font-weight: 600;
 		color: green;
@@ -282,7 +291,36 @@ const StyledSection = styled.section`
 		color: red;
 	}
 
-	.header {
-		font-weight: 600;
+	@media only screen and (max-width: 1024px) {
+		th:nth-child(4) {
+			display: none;
+		}
+		td:nth-child(4) {
+			display: none;
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		.mission-table {
+			width: 98vw;
+		}
+
+		th:nth-child(5) {
+			display: none;
+		}
+
+		th:nth-child(4) {
+			display: none;
+		}
+
+		td:nth-child(5) {
+			display: none;
+		}
+
+		td:nth-child(4) {
+			display: none;
+		}
+		.total {
+			padding: 1rem;
+		}
 	}
 `;

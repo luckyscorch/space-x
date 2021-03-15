@@ -6,10 +6,14 @@ const Footer = () => {
 	const [companyInfo, setCompanyInfo] = useState({});
 
 	useEffect(() => {
-		fetch('https://api.spacexdata.com/v4/company')
-			.then((response) => response.json())
-			.then((data) => setCompanyInfo(data));
+		getInfo();
 	}, []);
+
+	const getInfo = async () => {
+		const response = await fetch('https://api.spacexdata.com/v4/company');
+		const data = await response.json();
+		setCompanyInfo(data);
+	};
 
 	return (
 		<>
@@ -51,17 +55,20 @@ const StyledFooter = styled.div`
 
 	.social {
 		display: flex;
+		min-width: 10rem;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: space-evenly;
 		margin: 0.2rem;
-		p {
-			margin-right: 0.4rem;
-		}
 	}
+
 	p {
 		font-size: 0.7rem;
 		font-weight: 400;
 		text-align: center;
+	}
+
+	.logo-container {
+		display: inline-block;
 	}
 
 	.logo {
@@ -77,5 +84,11 @@ const StyledFooter = styled.div`
 
 	.summary {
 		margin-left: 0.5rem;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.summary {
+			display: none;
+		}
 	}
 `;
