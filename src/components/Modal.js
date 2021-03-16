@@ -175,7 +175,7 @@ const StyledSection = styled.section`
 	}
 	@media only screen and (max-width: 480px) {
 		.modal-wrapper {
-			width: 100%;
+			width: 90%;
 		}
 	}
 `;

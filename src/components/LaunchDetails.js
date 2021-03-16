@@ -219,6 +219,7 @@ const StyledDiv = styled.div`
 	}
 
 	@media only screen and (max-width: 768px) {
+		padding: 0;
 		.description {
 			display: none;
 		}
@@ -229,6 +230,18 @@ const StyledDiv = styled.div`
 	@media only screen and (max-width: 480px) {
 		td {
 			font-size: 0.8rem;
+		}
+
+		img {
+			width: 70px;
+			height: 70px;
+			position: absolute;
+			top: -40px;
+			right: -40px;
+		}
+
+		.line {
+			margin: 0.5rem;
 		}
 	}
 `;

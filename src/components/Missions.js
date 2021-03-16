@@ -323,4 +323,47 @@ const StyledSection = styled.section`
 			padding: 1rem;
 		}
 	}
+
+	@media only screen and (max-width: 480px) {
+		padding-bottom: 5vh;
+		.mission-table {
+			.controls {
+				padding-top: 0.75rem;
+				padding-bottom: 0.75em;
+				.logo {
+					width: 1rem;
+					height: 1rem;
+				}
+			}
+		}
+		.total {
+			h1 {
+				font-size: 2rem;
+			}
+			p {
+				font-size: 0.8rem;
+			}
+		}
+
+		tr {
+			height: 2.5rem;
+			cursor: pointer;
+		}
+
+		td {
+			font-size: 0.7rem;
+			font-weight: 400;
+		}
+
+		th {
+			font-size: 0.7rem;
+			font-weight: 500;
+		}
+		.success {
+			font-weight: 500;
+		}
+		.failure {
+			font-weight: 500;
+		}
+	}
 `;

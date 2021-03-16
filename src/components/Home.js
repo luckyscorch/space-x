@@ -111,4 +111,23 @@ const StyledDiv = styled.div`
 			padding: 0.5rem 0.5rem;
 		}
 	}
+
+	@media only screen and (max-width: 480px) {
+		.wrapper {
+			padding: 0;
+		}
+		.mission p {
+			font-size: 1rem;
+		}
+
+		.mission h1 {
+			font-size: 1.5rem;
+		}
+		button {
+			width: 6rem;
+			margin-top: 0.5rem;
+			font-size: 0.7rem;
+			padding: 0.5rem 0.5rem;
+		}
+	}
 `;

@@ -133,7 +133,7 @@ const StyledSection = styled.section`
 		justify-content: space-evenly;
 		align-items: center;
 		width: 60%;
-		height: 100%;
+		height: 80%;
 	}
 
 	.name {
@@ -155,6 +155,7 @@ const StyledSection = styled.section`
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		width: 6rem;
 	}
 
 	img {
@@ -221,9 +222,6 @@ const StyledSection = styled.section`
 			width: 100%;
 			padding: 0.5rem;
 		}
-		img {
-			max-width: 30vw;
-		}
 
 		table {
 			width: 50vw;
@@ -240,7 +238,10 @@ const StyledSection = styled.section`
 		}
 
 		table {
-			width: 60vw;
+			width: 65vw;
+		}
+		img {
+			height: 70vh;
 		}
 	}
 	@media only screen and (max-width: 768px) {

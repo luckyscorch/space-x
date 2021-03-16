@@ -89,6 +89,7 @@ const StyledTimer = styled.div`
 	align-items: center;
 	justify-content: space-evenly;
 	padding: 1rem;
+	margin-bottom: 1rem;
 
 	h3 {
 		text-align: center;
