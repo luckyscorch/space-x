@@ -300,6 +300,20 @@ const StyledSection = styled.section`
 		}
 	}
 	@media only screen and (max-width: 768px) {
+		height: 80%;
+		.totals {
+			width: 80%;
+		}
+		.total {
+			padding: 1rem;
+			p {
+				margin-bottom: 0;
+				font-size: 1rem;
+			}
+			h1 {
+				font-size: 2.5rem;
+			}
+		}
 		.mission-table {
 			width: 98vw;
 		}
@@ -319,13 +333,9 @@ const StyledSection = styled.section`
 		td:nth-child(4) {
 			display: none;
 		}
-		.total {
-			padding: 1rem;
-		}
 	}
 
 	@media only screen and (max-width: 480px) {
-		padding-bottom: 5vh;
 		.mission-table {
 			.controls {
 				padding-top: 0.75rem;
@@ -338,15 +348,14 @@ const StyledSection = styled.section`
 		}
 		.total {
 			h1 {
-				font-size: 2rem;
+				font-size: 2.5rem;
 			}
 			p {
-				font-size: 0.8rem;
+				font-size: 1rem;
 			}
 		}
-
 		tr {
-			height: 2.5rem;
+			height: 2.2rem;
 			cursor: pointer;
 		}
 
