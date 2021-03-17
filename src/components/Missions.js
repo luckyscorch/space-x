@@ -336,6 +336,7 @@ const StyledSection = styled.section`
 	}
 
 	@media only screen and (max-width: 480px) {
+		height: 75%;
 		.mission-table {
 			.controls {
 				padding-top: 0.75rem;

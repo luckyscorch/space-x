@@ -163,7 +163,7 @@ const StyledSection = styled.section`
 	}
 
 	.falcon1 {
-		height: 40vh !important;
+		height: 30vh !important;
 	}
 
 	.overview {
@@ -241,7 +241,7 @@ const StyledSection = styled.section`
 			width: 65vw;
 		}
 		img {
-			height: 70vh;
+			height: 60vh;
 		}
 	}
 	@media only screen and (max-width: 768px) {
