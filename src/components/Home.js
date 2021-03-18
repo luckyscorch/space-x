@@ -113,7 +113,7 @@ const StyledDiv = styled.div`
 	}
 
 	@media only screen and (max-width: 480px) {
-		height: 80%;
+		height: 70%;
 		.wrapper {
 			padding: 0;
 		}
