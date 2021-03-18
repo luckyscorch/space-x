@@ -376,4 +376,45 @@ const StyledSection = styled.section`
 			font-weight: 500;
 		}
 	}
+	@media only screen and (max-width: 360px) {
+		height: 80%;
+		.mission-table {
+			.controls {
+				padding-top: 0.5rem;
+				padding-bottom: 0.5em;
+				.logo {
+					width: 1rem;
+					height: 1rem;
+				}
+			}
+		}
+		.total {
+			h1 {
+				font-size: 2rem;
+			}
+			p {
+				font-size: 0.8rem;
+			}
+		}
+		tr {
+			height: 2rem;
+			cursor: pointer;
+		}
+
+		td {
+			font-size: 0.6rem;
+			font-weight: 300;
+		}
+
+		th {
+			font-size: 0.6rem;
+			font-weight: 400;
+		}
+		.success {
+			font-weight: 400;
+		}
+		.failure {
+			font-weight: 400;
+		}
+	}
 `;

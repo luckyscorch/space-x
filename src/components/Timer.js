@@ -129,4 +129,20 @@ const StyledTimer = styled.div`
 			margin: 0.1rem;
 		}
 	}
+	@media screen and (max-width: 360px) {
+		h3 {
+			font-size: 0.8rem;
+		}
+
+		.time-box {
+			padding: 0.1rem;
+		}
+
+		span {
+			width: 1.5rem;
+			font-size: 2rem;
+			font-weight: 300;
+			margin: 0.1rem;
+		}
+	}
 `;

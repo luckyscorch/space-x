@@ -243,10 +243,27 @@ const StyledSection = styled.section`
 		img {
 			height: 60vh;
 		}
-	}
-	@media only screen and (max-width: 768px) {
 		td {
 			font-size: 0.8rem;
+		}
+	}
+	@media only screen and (max-width: 360px) {
+		h1 {
+			font-size: 1.5rem;
+		}
+
+		h3 {
+			font-size: 0.8rem;
+		}
+
+		table {
+			width: 60vw;
+		}
+		img {
+			height: 60vh;
+		}
+		td {
+			font-size: 0.6rem;
 		}
 	}
 `;

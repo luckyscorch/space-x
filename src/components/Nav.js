@@ -134,4 +134,17 @@ const StyledNav = styled.nav`
 			font-size: 0.7rem;
 		}
 	}
+	@media only screen and (max-width: 360px) {
+		img {
+			height: 1.5rem;
+		}
+		h3 {
+			font-size: 0.6rem;
+		}
+		button {
+			width: 4rem;
+			font-size: 0.6rem;
+			padding: 0.3rem 0.3rem;
+		}
+	}
 `;

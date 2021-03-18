@@ -81,6 +81,7 @@ const StyledSection = styled.section`
 	justify-content: center;
 	align-items: center;
 	background: rgba(0, 0, 0, 0.5);
+	z-index: 10;
 	.modal-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -176,6 +177,19 @@ const StyledSection = styled.section`
 	@media only screen and (max-width: 480px) {
 		.modal-wrapper {
 			width: 90%;
+		}
+	}
+	@media only screen and (max-width: 480px) {
+		h1 {
+			font-size: 1.5rem;
+		}
+
+		h2 {
+			font-size: 0.8rem;
+			font-weight: 400;
+		}
+		.modal-wrapper {
+			padding: 0.5rem;
 		}
 	}
 `;

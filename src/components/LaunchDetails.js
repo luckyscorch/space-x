@@ -244,4 +244,21 @@ const StyledDiv = styled.div`
 			margin: 0.5rem;
 		}
 	}
+	@media only screen and (max-width: 360px) {
+		td {
+			font-size: 0.5rem;
+		}
+
+		img {
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			top: -25px;
+			right: -25px;
+		}
+
+		.line {
+			margin: 0.5rem;
+		}
+	}
 `;
