@@ -59,7 +59,9 @@ const LaunchDetails = ({ nextLaunch }) => {
 								: 'Check back later for more information..'}
 						</p>
 					</div>
-					<img src={nextLaunch.links.patch.small} alt='patch' />
+					{nextLaunch.links.patch.small ? (
+						<img src={nextLaunch.links.patch.small} alt='patch' />
+					) : null}
 					<table>
 						<tbody>
 							<tr>
